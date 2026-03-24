@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="À propos de la Coopérative Terroir Amazigh — Notre histoire, notre mission et nos valeurs. Producteurs authentiques du terroir marocain depuis des générations.">
+  <meta name="keywords" content="coopérative marocaine, huile argan naturelle, producteurs locaux, terroir souss-massa, amazigh">
+  <meta name="author" content="Coopérative Terroir Amazigh">
+  <meta property="og:title" content="À propos — Coopérative Terroir Amazigh">
+  <meta property="og:description" content="Découvrez notre histoire, nos valeurs et les femmes et hommes qui font vivre la coopérative.">
+  <meta property="og:type" content="website">
+  <title>À propos — Coopérative Terroir Amazigh</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    /* ── Page-specific styles ── */
+    .about-hero {
+      position: relative;
+      min-height: 65vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+    .about-hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .about-hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .about-hero:hover .about-hero-bg img { transform: scale(1); }
+    .about-hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, rgba(26,15,6,.88) 40%, rgba(26,15,6,.45) 100%);
+    }
+    .about-hero-content {
+      position: relative; z-index: 2;
+      max-width: 640px;
+    }
+    .breadcrumb {
+      display: flex; gap: 0.5rem;
+      align-items: center;
+      font-size: 0.82rem; opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--honey); text-decoration: none; }
+    .breadcrumb span { opacity: 0.6; }
+    .about-hero-badge {
+      display: inline-block;
+      background: rgba(212,165,32,.2);
+      border: 1px solid rgba(212,165,32,.4);
+      color: var(--honey);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4em 1em;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+    }
+    .about-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .about-hero h1 em { color: var(--honey); font-style: normal; }
+    .about-hero p {
+      font-size: 1.1rem;
+      opacity: 0.88;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+    .hero-stats-row {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+    }
+    .hero-stat { }
+    .hero-stat .val {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700;
+      color: var(--honey); line-height: 1;
+    }
+    .hero-stat .lbl { font-size: 0.82rem; opacity: 0.75; margin-top: 0.25rem; }
+
+    /* ── Section helpers ── */
+    .section-label { text-align:center; font-size:.78rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--earth); margin-bottom:.75rem; }
+    .section-heading { text-align:center; font-family:var(--font-display); font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; color:var(--dark); margin-bottom:.5rem; }
+    .section-sub { text-align:center; color:#6b5940; max-width:560px; margin:0 auto 3rem; font-size:.97rem; line-height:1.7; }
+
+    /* ── Story section ── */
+    .story-section {
+      padding: 5rem 0;
+      background: var(--cream);
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .story-img-wrap {
+      position: relative;
+    }
+    .story-img-wrap img {
+      width: 100%; border-radius: 1.2rem;
+      box-shadow: 0 16px 50px rgba(0,0,0,.18);
+      display: block;
+    }
+    .story-img-badge {
+      position: absolute;
+      bottom: -1.2rem; right: -1.2rem;
+      background: var(--honey);
+      color: #fff;
+      padding: 1.2rem;
+      border-radius: 1rem;
+      text-align: center;
+      min-width: 90px;
+      box-shadow: 0 8px 24px rgba(212,165,32,.4);
+    }
+    .story-img-badge .big {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700; line-height: 1;
+    }
+    .story-img-badge .small { font-size: 0.72rem; font-weight: 700; margin-top: 0.2rem; opacity: 0.9; }
+    @media (max-width: 768px) { .story-img-badge { bottom: 0.5rem; right: 0.5rem; } }
+
+    .story-content {}
+    .story-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--earth);
+      margin-bottom: 0.75rem;
+    }
+    .story-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem,4vw,2.5rem);
+      font-weight: 700; color: var(--dark);
+      line-height: 1.2; margin-bottom: 1.25rem;
+    }
+    .story-content h2 em { color: var(--olive); font-style: normal; }
+    .story-content p {
+      color: #6b5940; font-size: 0.96rem;
+      line-height: 1.8; margin-bottom: 1.1rem;
+    }
+    .story-timeline {
+      margin-top: 1.75rem;
+      border-left: 2px solid #e0cdb8;
+      padding-left: 1.5rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .timeline-item { position: relative; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem; top: 0.35rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--earth);
+      border: 2px solid var(--cream);
+    }
+    .timeline-year {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--earth); margin-bottom: 0.2rem;
+    }
+    .timeline-text {
+      font-size: 0.9rem; color: #6b5940; line-height: 1.65;
+    }
+
+    /* ── Values section ── */
+    .values-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--olive) 0%, #2a4226 100%);
+      color: var(--cream);
+    }
+    .values-section .section-label { color: var(--honey); }
+    .values-section .section-heading { color: var(--cream); }
+    .values-section .section-sub { color: rgba(250,243,232,.75); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 1.1rem;
+      padding: 2rem 1.5rem 1.75rem;
+      text-align: center;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .value-card:hover {
+      background: rgba(255,255,255,.14);
+      transform: translateY(-4px);
+    }
+    .value-icon {
+      font-size: 2.4rem; margin-bottom: 1rem;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+    }
+    .value-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--honey); margin-bottom: 0.6rem;
+    }
+    .value-desc {
+      font-size: 0.88rem;
+      color: rgba(250,243,232,.8);
+      line-height: 1.7;
+    }
+
+    /* ── Mission section ── */
+    .mission-section {
+      padding: 5rem 0;
+      background: #f5ede2;
+    }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .mission-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .mission-content {}
+    .mission-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem,4vw,2.5rem);
+      font-weight: 700; color: var(--dark);
+      margin-bottom: 1.25rem; line-height: 1.2;
+    }
+    .mission-content p { color:#6b5940; font-size:.96rem; line-height:1.8; margin-bottom:1rem; }
+    .mission-points {
+      list-style: none; padding: 0; margin: 1.5rem 0 0;
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .mission-points li {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      font-size: 0.92rem; color: #5a4030; line-height: 1.6;
+    }
+    .mp-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--olive); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .mp-icon svg {
+      width: 14px; height: 14px;
+      stroke: #fff; fill: none; stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .mission-img-stack {
+      position: relative; height: 440px;
+    }
+    .mission-img-stack img {
+      position: absolute;
+      border-radius: 1rem;
+      object-fit: cover;
+      box-shadow: 0 12px 35px rgba(0,0,0,.18);
+    }
+    .mission-img-stack .img-main {
+      width: 78%; height: 82%;
+      top: 0; left: 0;
+    }
+    .mission-img-stack .img-sec {
+      width: 52%; height: 55%;
+      bottom: 0; right: 0;
+      border: 4px solid var(--cream);
+    }
+    @media (max-width:768px) {
+      .mission-img-stack { height: 280px; }
+      .mission-img-stack .img-main { width:75%; height:78%; }
+      .mission-img-stack .img-sec  { width:50%; height:52%; }
+    }
+
+    /* ── Numbers / Impact ── */
+    .impact-section {
+      padding: 4rem 0;
+      background: var(--cream);
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .impact-card {
+      background: #fff;
+      border-radius: 1.1rem;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      border-bottom: 3px solid transparent;
+      transition: transform 0.25s ease;
+    }
+    .impact-card:hover { transform: translateY(-4px); }
+    .impact-card:nth-child(1) { border-bottom-color: var(--olive); }
+    .impact-card:nth-child(2) { border-bottom-color: var(--honey); }
+    .impact-card:nth-child(3) { border-bottom-color: var(--earth); }
+    .impact-card:nth-child(4) { border-bottom-color: #c0392b; }
+    .impact-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem; font-weight: 700;
+      color: var(--dark); line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .impact-label {
+      font-size: 0.85rem; color: #6b5940;
+      font-weight: 600; line-height: 1.4;
+    }
+
+    /* ── Team section ── */
+    .team-section {
+      padding: 5rem 0;
+      background: #f5ede2;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .team-card {
+      background: #fff;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(0,0,0,.14);
+    }
+    .team-card img {
+      width: 100%; aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+    .team-card-body { padding: 1.25rem 1rem 1.4rem; }
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.2rem;
+    }
+    .team-role {
+      font-size: 0.82rem; color: var(--earth);
+      font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .team-bio { font-size: 0.84rem; color: #6b5940; line-height: 1.65; }
+
+    /* ── Certifications ── */
+    .cert-section {
+      padding: 4rem 0;
+      background: var(--cream);
+    }
+    .cert-grid {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      justify-content: center; align-items: center;
+      max-width: 800px; margin: 0 auto;
+    }
+    .cert-pill {
+      display: flex; align-items: center; gap: 0.7rem;
+      background: #fff;
+      border: 1.5px solid #e0cdb8;
+      border-radius: 50px;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--dark);
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+    .cert-pill span { font-size: 1.3rem; }
+
+    /* ── CTA ── */
+    .about-cta {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--earth) 0%, #8b4f1a 100%);
+      text-align: center;
+      color: #fff;
+    }
+    .about-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem,5vw,2.8rem);
+      margin-bottom: 0.75rem;
+    }
+    .about-cta p { opacity:.88; max-width:500px; margin:0 auto 2rem; line-height:1.7; }
+    .btn-group { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       DESKTOP STICKY HEADER
+       ══════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo" aria-label="Accueil Coopérative Terroir Amazigh">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Terroir Amazigh</span>
+          <span class="logo-tagline">Coopérative Marocaine</span>
+        </div>
+      </a>
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="livraison.html">Livraison</a>
+        <a href="about.html" class="active">À propos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="panier.html" class="header-cart-btn" aria-label="Mon panier">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Panier
+        <span class="cart-count-badge" style="display:none" aria-label="articles dans le panier">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── Hero ── -->
+    <section class="about-hero" aria-label="À propos de la coopérative">
+      <div class="about-hero-bg">
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWmw9BKx8qEyTeRDgMs-0UEriHxoGwBVaiOSy-ofUo2EDZciQPHrnhcdToOczmBDh6ghAjQhR38aU0EEPgk5luXidODMZYywNMZa91sCdiKCr-JhYjfnF-1a-58t4EOQe5routXdGHnF1Tq5zuHPWqIja5A5kjlcENIQSeG57yazcP1oCGUp_CE8NzHY-0/s2752/about.webp"
+          alt="Forêt d'arganiers dans la région Souss-Massa au Maroc"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="about-hero-overlay" aria-hidden="true"></div>
+      <div class="container about-hero-content">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <span>À propos</span>
+        </nav>
+        <div class="about-hero-badge">✦ Coopérative Certifiée · Depuis 2006</div>
+        <h1>Une Histoire de <em>Passion</em><br>et d'Authenticité</h1>
+        <p>Née de la volonté de femmes et d'hommes du Souss-Massa de valoriser leur terroir, notre coopérative défend depuis près de deux décennies une vision simple : produire mieux, vendre juste, vivre dignement.</p>
+        <div class="hero-stats-row">
+          <div class="hero-stat">
+            <div class="val">+18</div>
+            <div class="lbl">Années d'expérience</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">47</div>
+            <div class="lbl">Membres actifs</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">12+</div>
+            <div class="lbl">Produits du terroir</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">🇲🇦</div>
+            <div class="lbl">100% Marocain</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Story ── -->
+    <section class="story-section" aria-label="Notre histoire">
+      <div class="container">
+        <div class="story-grid">
+
+          <div class="story-img-wrap reveal">
+            <img
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl5dC_UuzqQYk4cLHupLFdUFX3SsSz-sNSGjZz4lMTEmprhD48A5QMvCJuXkvZ0ZUUqPM1oVEHULV2GPqGQCyinVUVZd_kw0OvvtnIcZEQQh1POFNt3k_4fxjX0dRw8CfzYAwFWcp2hKYinlue7don5TmmJhjvV9ZqGaN9B7vh_rDz16IXvDJ_xZd2z0EY/s2816/nature.webp"
+              alt="Femmes de la coopérative travaillant l'argan"
+              loading="lazy"
+            >
+            <div class="story-img-badge">
+              <div class="big">2006</div>
+              <div class="small">Fondation</div>
+            </div>
+          </div>
+
+          <div class="story-content reveal" style="--reveal-delay:.15s">
+            <div class="story-label">Notre histoire</div>
+            <h2>Nés de la Terre,<br><em>Ancrés dans la Tradition</em></h2>
+            <p>La Coopérative Terroir Amazigh est née en 2006 dans la région de Souss-Massa, au cœur de la forêt d'arganiers. Fondée par un groupe de familles berbères attachées à leurs terres, elle avait alors un seul objectif : transmettre des savoir-faire ancestraux et offrir aux producteurs locaux une alternative juste aux circuits de distribution traditionnels.</p>
+            <p>Au fil des années, la coopérative a grandi, accueillant de nouveaux membres, diversifiant ses gammes et développant ses marchés — sans jamais sacrifier ce qui fait son âme : la qualité irréprochable, la transparence et l'enracinement dans le territoire.</p>
+            <p>Aujourd'hui, notre catalogue compte plus de douze produits du terroir, commercialisés partout au Maroc et expédiés à l'international pour les membres de la diaspora marocaine.</p>
+
+            <div class="story-timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">2006</div>
+                <div class="timeline-text">Création de la coopérative par 12 familles fondatrices à Souss-Massa.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-text">Premier agrément officiel et lancement de la gamme huile d'argan cosmétique.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-text">Ouverture à la vente directe en ligne et expansion de la gamme alimentation (amlou, miels).</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-text">Lancement de la livraison internationale pour la diaspora marocaine.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-text">47 membres actifs, 12+ produits, et une présence dans 15 pays.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Values ── -->
+    <section class="values-section" aria-label="Nos valeurs">
+      <div class="container">
+        <p class="section-label">Ce qui nous guide</p>
+        <h2 class="section-heading">Nos Valeurs Fondamentales</h2>
+        <p class="section-sub">Chaque décision, chaque produit, chaque relation — tout est guidé par ces principes.</p>
+
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <span class="value-icon">🌿</span>
+            <div class="value-title">Authenticité</div>
+            <p class="value-desc">Nos produits sont issus de recettes transmises de génération en génération, sans compromis sur les méthodes traditionnelles.</p>
+          </div>
+          <div class="value-card reveal" style="--reveal-delay:.1s">
+            <span class="value-icon">🤝</span>
+            <div class="value-title">Équité</div>
+            <p class="value-desc">Chaque membre reçoit une juste rémunération pour son travail. Pas d'intermédiaires abusifs — le producteur est valorisé.</p>
+          </div>
+          <div class="value-card reveal" style="--reveal-delay:.2s">
+            <span class="value-icon">🌍</span>
+            <div class="value-title">Durabilité</div>
+            <p class="value-desc">Nous cultivons, récoltons et produisons dans le respect total de l'écosystème de l'arganier, classé au patrimoine mondial.</p>
+          </div>
+          <div class="value-card reveal" style="--reveal-delay:.3s">
+            <span class="value-icon">⭐</span>
+            <div class="value-title">Qualité</div>
+            <p class="value-desc">Contrôle rigoureux à chaque étape, de la récolte à l'emballage. Votre satisfaction est notre engagement premier.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Mission ── -->
+    <section class="mission-section" aria-label="Notre mission">
+      <div class="container">
+        <div class="mission-grid">
+
+          <div class="mission-content reveal">
+            <p class="story-label">Notre mission</p>
+            <h2>Valoriser le Terroir,<br>Autonomiser les Producteurs</h2>
+            <p>Notre mission dépasse la simple commercialisation de produits. Nous créons un écosystème solidaire où chaque acteur — du producteur au consommateur — tire une valeur réelle et équitable de la chaîne.</p>
+            <p>Nous travaillons main dans la main avec des associations locales, des formateurs agricoles et des institutions pour élever continuellement nos standards et former la prochaine génération de producteurs.</p>
+            <ul class="mission-points">
+              <li>
+                <div class="mp-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                Garantir une production 100% naturelle, sans additifs ni conservateurs chimiques
+              </li>
+              <li>
+                <div class="mp-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                Soutenir l'autonomie économique des femmes dans la région Souss-Massa
+              </li>
+              <li>
+                <div class="mp-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                Préserver la forêt d'arganiers, classée réserve de biosphère par l'UNESCO
+              </li>
+              <li>
+                <div class="mp-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                Offrir des produits d'exception à prix justes, au Maroc et à l'international
+              </li>
+              <li>
+                <div class="mp-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                Transmettre les savoir-faire ancestraux amazighs aux générations futures
+              </li>
+            </ul>
+          </div>
+
+          <div class="mission-img-stack reveal" style="--reveal-delay:.2s">
+            <img
+              class="img-main"
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg27TqhVPAujx7FuFIUfNGR2o9yFdjpY1kqWV6SxahPb365WuoR5oRRaR9fxuVcGyn6hosMHwt6R1Iom0Dz9yLw5N5B6v2squFqgSH_AUY7B2ZYZJxlqQbjTcV8VRFQ_W0xADa3GD8nH7uPDrSfFihjvwWGf3L_ufzzR6-hv5eLUiP_PU6fUgVpPUg7R7nF/s1285/soutenire.webp"
+              alt="Production traditionnelle d'huile d'argan"
+              loading="lazy"
+            >
+            <img
+              class="img-sec"
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii3iAmL6ISkfLeGjX27bCccsZjd1jebnI6bC-IBgSy786GNcOaiq32B8JZoSWI0gCMcV6O_rHYSYItIkuLt814ikSYg_rU535AmP3stNFmFEOk59OwWUhNtMxkLlEk9Z3_15plz4wqxRNpxCCMPZSnQ0-Xl6x4itRcd6Eo009p4z8kzn5bbutHPrjbjQmF/s1285/la%20qualit%C3%A9.webp"
+              alt="Récolte de miel artisanal marocain"
+              loading="lazy"
+            >
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Impact numbers ── -->
+    <section class="impact-section" aria-label="Notre impact en chiffres">
+      <div class="container">
+        <p class="section-label">En chiffres</p>
+        <h2 class="section-heading">Notre Impact en 2026</h2>
+        <p class="section-sub">Des chiffres qui reflètent notre engagement sur le terrain.</p>
+
+        <div class="impact-grid">
+          <div class="impact-card reveal">
+            <div class="impact-num">47</div>
+            <div class="impact-label">Membres producteurs actifs</div>
+          </div>
+          <div class="impact-card reveal" style="--reveal-delay:.1s">
+            <div class="impact-num">12+</div>
+            <div class="impact-label">Produits du terroir référencés</div>
+          </div>
+          <div class="impact-card reveal" style="--reveal-delay:.2s">
+            <div class="impact-num">+1 200</div>
+            <div class="impact-label">Commandes livrées en 2026</div>
+          </div>
+          <div class="impact-card reveal" style="--reveal-delay:.3s">
+            <div class="impact-num">15</div>
+            <div class="impact-label">Pays desservis à l'international</div>
+          </div>
+          <div class="impact-card reveal" style="--reveal-delay:.4s">
+            <div class="impact-num">98%</div>
+            <div class="impact-label">Clients satisfaits (avis collectés)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Team ── -->
+    <section class="team-section" aria-label="Notre équipe">
+      <div class="container">
+        <p class="section-label">Les visages de la coopérative</p>
+        <h2 class="section-heading">Notre Équipe</h2>
+        <p class="section-sub">Des hommes et des femmes passionnés, unis par l'amour du terroir et le désir de le partager.</p>
+
+        <div class="team-grid">
+
+          <article class="team-card reveal">
+            <img src="https://picsum.photos/seed/team-fatima/400/400" alt="Portrait de Fatima Ait Brahim" loading="lazy">
+            <div class="team-card-body">
+              <div class="team-name">Fatima Aït Brahim</div>
+              <div class="team-role">Présidente Fondatrice</div>
+              <p class="team-bio">Pionnière de la coopérative depuis 2006, Fatima est le pilier humain de toute l'organisation.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal" style="--reveal-delay:.1s">
+            <img src="https://picsum.photos/seed/team-hassan/400/400" alt="Portrait de Hassan Oulamine" loading="lazy">
+            <div class="team-card-body">
+              <div class="team-name">Hassan Oulamîne</div>
+              <div class="team-role">Responsable Production</div>
+              <p class="team-bio">Maître presseur traditionnel, Hassan supervise l'extraction et la qualité de chaque lot d'huile.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal" style="--reveal-delay:.2s">
+            <img src="https://picsum.photos/seed/team-khadija/400/400" alt="Portrait de Khadija Moussaoui" loading="lazy">
+            <div class="team-card-body">
+              <div class="team-name">Khadija Moussaoui</div>
+              <div class="team-role">Responsable Qualité</div>
+              <p class="team-bio">Khadija garantit que chaque produit respecte les standards les plus stricts avant d'être commercialisé.</p>
+            </div>
+          </article>
+
+          <article class="team-card reveal" style="--reveal-delay:.3s">
+            <img src="https://picsum.photos/seed/team-youssef/400/400" alt="Portrait de Youssef Elbachir" loading="lazy">
+            <div class="team-card-body">
+              <div class="team-name">Youssef Elbachir</div>
+              <div class="team-role">Logistique & Livraisons</div>
+              <p class="team-bio">Youssef coordonne l'expédition de toutes les commandes, au Maroc comme à l'international.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Certifications ── -->
+    <section class="cert-section" aria-label="Certifications et labels">
+      <div class="container">
+        <p class="section-label">Nos certifications</p>
+        <h2 class="section-heading">Reconnus &amp; Certifiés</h2>
+        <p class="section-sub">Nos produits bénéficient de certifications officielles qui attestent de leur qualité et leur origine.</p>
+        <div class="cert-grid">
+          <div class="cert-pill reveal"><span>🌿</span> Production Naturelle</div>
+          <div class="cert-pill reveal" style="--reveal-delay:.05s"><span>🇲🇦</span> Origine Maroc Garantie</div>
+          <div class="cert-pill reveal" style="--reveal-delay:.1s"><span>🏛️</span> Coopérative Agréée</div>
+          <div class="cert-pill reveal" style="--reveal-delay:.15s"><span>🌍</span> Réserve Biosphère UNESCO</div>
+          <div class="cert-pill reveal" style="--reveal-delay:.2s"><span>🤝</span> Commerce Équitable</div>
+          <div class="cert-pill reveal" style="--reveal-delay:.25s"><span>🌾</span> Sans OGM · Sans Additifs</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="about-cta" aria-label="Appel à l'action">
+      <div class="container">
+        <h2>Envie de Goûter l'Authenticité ?</h2>
+        <p>Découvrez notre gamme complète de produits du terroir et passez votre première commande directement via WhatsApp.</p>
+        <div class="btn-group">
+          <a href="products.html" class="btn btn-primary">Découvrir nos Produits</a>
+          <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.5);color:#fff;">Nous Contacter</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <span class="logo-name" style="color:var(--cream)">Terroir Amazigh</span>
+          </div>
+          <p class="footer-desc">Des produits authentiques, issus du cœur des montagnes du Souss-Massa. 100% naturels, faits à la main.</p>
+          <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Commander sur WhatsApp</a>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="products.html">Produits</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="panier.html">Mon Panier</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Informations</h4>
+          <ul class="footer-links">
+            <li><a href="livraison.html">Livraison</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Politique de retour</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+            +212 6 33 54 86 05
+          </div>
+          
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Région Souss-Massa, Maroc
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Coopérative Terroir Amazigh. Tous droits réservés.</p>
+        <p style="color:var(--honey);font-size:.78rem">🇲🇦 Hicham Connecte</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       MOBILE BOTTOM NAVIGATION
+       ══════════════════════════════════════════════════ -->
+  <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
+    <div class="bottom-nav-items">
+      <a href="index.html" class="bottom-nav-item" aria-label="Accueil">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Accueil</span>
+      </a>
+      <a href="products.html" class="bottom-nav-item" aria-label="Produits">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span>Produits</span>
+      </a>
+      <a href="panier.html" class="bottom-nav-item" aria-label="Panier" style="position:relative">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="bnav-badge" aria-hidden="true">0</span>
+        <span>Panier</span>
+      </a>
+      <a href="livraison.html" class="bottom-nav-item" aria-label="Livraison">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Livraison</span>
+      </a>
+      <a href="contact.html" class="bottom-nav-item" aria-label="Contact">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="wa-float" aria-label="Commander sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+  </a>
+
+  <di
+  id="app-toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

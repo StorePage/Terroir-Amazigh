@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informations de livraison — Coopérative Terroir Amazigh. Livraison au Maroc dès 25 DH, gratuite à partir de 499 DH, et livraison internationale disponible.">
+  <meta name="keywords" content="livraison maroc, expédition huile argan, commande terroir marocain">
+  <meta name="author" content="Coopérative Terroir Amazigh">
+  <meta property="og:title" content="Livraison — Coopérative Terroir Amazigh">
+  <meta property="og:description" content="Découvrez nos options de livraison au Maroc et à l'international.">
+  <meta property="og:type" content="website">
+  <title>Livraison — Coopérative Terroir Amazigh</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    /* ── Page-specific styles ── */
+    .delivery-hero {
+      background: linear-gradient(135deg, var(--olive) 0%, #2a4226 100%);
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+      color: var(--cream);
+    }
+    .delivery-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .delivery-hero p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--honey); text-decoration: none; }
+    .breadcrumb span { opacity: 0.6; }
+
+    /* Zone cards */
+    .delivery-zones {
+      padding: 4rem 0;
+      background: var(--cream);
+    }
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 0.75rem;
+    }
+    .section-heading {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: #6b5940;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .zone-card {
+      background: #fff;
+      border-radius: 1.2rem;
+      padding: 2rem 1.75rem 1.75rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      border-top: 4px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .zone-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.12);
+    }
+    .zone-card.maroc { border-top-color: var(--olive); }
+    .zone-card.gratuit { border-top-color: var(--honey); }
+    .zone-card.international { border-top-color: var(--earth); }
+
+    .zone-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3em 0.8em;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+    }
+    .zone-card.maroc .zone-badge { background: #e8f5e9; color: var(--olive); }
+    .zone-card.gratuit .zone-badge { background: #fff8e1; color: #b8860b; }
+    .zone-card.international .zone-badge { background: #fef3e2; color: var(--earth); }
+
+    .zone-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .zone-card.maroc .zone-icon { background: rgba(58,92,53,.12); }
+    .zone-card.gratuit .zone-icon { background: rgba(212,165,32,.12); }
+    .zone-card.international .zone-icon { background: rgba(184,114,45,.12); }
+
+    .zone-icon svg { width: 26px; height: 26px; stroke-width: 1.8; fill: none; stroke: currentColor; }
+    .zone-card.maroc .zone-icon svg { color: var(--olive); }
+    .zone-card.gratuit .zone-icon svg { color: var(--honey); }
+    .zone-card.international .zone-icon svg { color: var(--earth); }
+
+    .zone-price {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .zone-price span {
+      font-size: 1rem;
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: #888;
+    }
+    .zone-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .zone-desc {
+      font-size: 0.9rem;
+      color: #6b5940;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .zone-features {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .zone-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: #555;
+    }
+    .zone-features li::before {
+      content: '';
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233A5C35' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    /* Popular tag */
+    .popular-tag {
+      position: absolute;
+      top: 1.2rem; right: 1.2rem;
+      background: var(--honey);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3em 0.75em;
+      border-radius: 50px;
+    }
+
+    /* How it works */
+    .how-section {
+      padding: 4rem 0;
+      background: #f5ede2;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, var(--olive), var(--honey), var(--earth));
+      z-index: 0;
+    }
+    @media (max-width: 640px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--olive);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(58,92,53,.3);
+      border: 3px solid #fff;
+    }
+    .step-item:nth-child(2) .step-num { background: var(--honey); box-shadow: 0 4px 12px rgba(212,165,32,.3); }
+    .step-item:nth-child(3) .step-num { background: var(--earth); box-shadow: 0 4px 12px rgba(184,114,45,.3); }
+    .step-item:nth-child(4) .step-num { background: #c0392b; box-shadow: 0 4px 12px rgba(192,57,43,.3); }
+    .step-title { font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; font-size: 0.97rem; }
+    .step-desc { font-size: 0.84rem; color: #6b5940; line-height: 1.6; }
+
+    /* Delays + guarantees */
+    .delays-section {
+      padding: 4rem 0;
+      background: var(--cream);
+    }
+    .delays-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .delay-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+    .delay-table thead tr { background: var(--olive); color: #fff; }
+    .delay-table thead th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 0.87rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .delay-table tbody tr { background: #fff; border-bottom: 1px solid #f0e8dc; }
+    .delay-table tbody tr:nth-child(even) { background: #faf7f3; }
+    .delay-table tbody td {
+      padding: 0.9rem 1.25rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .delay-table tbody td:first-child { font-weight: 600; color: var(--dark); }
+    .chip {
+      display: inline-block;
+      padding: 0.2em 0.75em;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .chip.green { background: #e8f5e9; color: var(--olive); }
+    .chip.gold  { background: #fff8e1; color: #b8860b; }
+    .chip.orange{ background: #fef3e2; color: var(--earth); }
+
+    /* FAQ */
+    .faq-section {
+      padding: 4rem 0;
+      background: #f5ede2;
+    }
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 0.85rem;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      gap: 1rem;
+      user-select: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+    }
+    .faq-question:hover { color: var(--olive); }
+    .faq-chevron {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      font-size: 0.9rem;
+      color: #6b5940;
+      line-height: 1.75;
+      padding: 0 1.4rem;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 1.4rem 1.2rem;
+    }
+
+    /* CTA banner */
+    .delivery-cta {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--earth) 0%, #8b4f1a 100%);
+      text-align: center;
+      color: #fff;
+    }
+    .delivery-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.75rem;
+    }
+    .delivery-cta p { opacity: 0.88; margin-bottom: 1.75rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .delivery-cta .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       DESKTOP STICKY HEADER
+       ══════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <a href="index.html" class="site-logo" aria-label="Accueil Coopérative Terroir Amazigh">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Terroir Amazigh</span>
+          <span class="logo-tagline">Coopérative Marocaine</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="livraison.html" class="active">Livraison</a>
+        <a href="about.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="panier.html" class="header-cart-btn" aria-label="Mon panier">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Panier
+        <span class="cart-count-badge" style="display:none" aria-label="articles dans le panier">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── Hero ── -->
+    <section class="delivery-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <span>Livraison</span>
+        </nav>
+        <h1>🚚 Livraison Rapide &amp; Sécurisée</h1>
+        <p>Vos produits du terroir marocain livrés chez vous, partout au Maroc et à l'international.</p>
+      </div>
+    </section>
+
+    <!-- ── Zone Cards ── -->
+    <section class="delivery-zones" aria-label="Options de livraison">
+      <div class="container">
+        <p class="section-label">Options disponibles</p>
+        <h2 class="section-heading">Choisissez Votre Zone</h2>
+        <p class="section-sub">Des tarifs transparents, sans surprise. Commandez avec confiance.</p>
+
+        <div class="zones-grid">
+
+          <!-- Maroc Standard -->
+          <article class="zone-card maroc reveal">
+            <span class="zone-badge">Maroc</span>
+            <div class="zone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="zone-price">25 <span>DH</span></div>
+            <div class="zone-title">Livraison Standard — Maroc</div>
+            <p class="zone-desc">Livraison à domicile pour toutes les villes du Maroc via transporteur partenaire agréé.</p>
+            <ul class="zone-features">
+              <li>Délai 2–4 jours ouvrables</li>
+              <li>Suivi de colis inclus</li>
+              <li>Emballage soigné & sécurisé</li>
+              <li>Disponible partout au Royaume</li>
+            </ul>
+          </article>
+
+          <!-- Livraison Gratuite -->
+          <article class="zone-card gratuit reveal" style="--reveal-delay:0.1s">
+            <span class="popular-tag">⭐ Populaire</span>
+            <span class="zone-badge">Offerte</span>
+            <div class="zone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div class="zone-price">0 <span>DH</span></div>
+            <div class="zone-title">Livraison Gratuite — dès 499 DH</div>
+            <p class="zone-desc">Commandez pour 499 DH ou plus et profitez de la livraison offerte, sans condition supplémentaire.</p>
+            <ul class="zone-features">
+              <li>Automatiquement appliquée</li>
+              <li>Valable partout au Maroc</li>
+              <li>Délai identique : 2–4 jours</li>
+              <li>Cumulable avec toute commande</li>
+            </ul>
+          </article>
+
+          <!-- International -->
+          <article class="zone-card international reveal" style="--reveal-delay:0.2s">
+            <span class="zone-badge">International</span>
+            <div class="zone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div class="zone-price">250 <span>DH</span></div>
+            <div class="zone-title">Livraison Internationale</div>
+            <p class="zone-desc">Nous expédions nos produits vers l'Europe, le Moyen-Orient et au-delà, avec suivi complet.</p>
+            <ul class="zone-features">
+              <li>Délai 7–14 jours ouvrables</li>
+              <li>Suivi international inclus</li>
+              <li>Emballage renforcé export</li>
+              <li>Europe, Golfe & autres zones</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How it works ── -->
+    <section class="how-section" aria-label="Comment ça fonctionne">
+      <div class="container">
+        <p class="section-label">Processus</p>
+        <h2 class="section-heading">Comment ça Marche ?</h2>
+        <p class="section-sub">De la commande à votre porte, un processus simple et transparent.</p>
+
+        <div class="steps-grid">
+          <div class="step-item reveal">
+            <div class="step-num">1</div>
+            <div class="step-title">Choisissez vos produits</div>
+            <p class="step-desc">Parcourez notre catalogue et ajoutez vos produits au panier.</p>
+          </div>
+          <div class="step-item reveal" style="--reveal-delay:.1s">
+            <div class="step-num">2</div>
+            <div class="step-title">Commandez via WhatsApp</div>
+            <p class="step-desc">Validez votre commande avec votre nom et adresse sur WhatsApp.</p>
+          </div>
+          <div class="step-item reveal" style="--reveal-delay:.2s">
+            <div class="step-num">3</div>
+            <div class="step-title">Confirmation rapide</div>
+            <p class="step-desc">Nous confirmons votre commande et le mode de paiement sous 2h.</p>
+          </div>
+          <div class="step-item reveal" style="--reveal-delay:.3s">
+            <div class="step-num">4</div>
+            <div class="step-title">Livraison à domicile</div>
+            <p class="step-desc">Votre colis vous parvient soigneusement emballé et sécurisé.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Delays Table ── -->
+    <section class="delays-section" aria-label="Délais de livraison">
+      <div class="container">
+        <p class="section-label">Délais estimés</p>
+        <h2 class="section-heading">Délais &amp; Zones de Livraison</h2>
+        <p class="section-sub">Retrouvez les délais estimés selon votre destination.</p>
+
+        <div class="delays-wrap">
+          <table class="delay-table" aria-label="Tableau des délais de livraison">
+            <thead>
+              <tr>
+                <th scope="col">Destination</th>
+                <th scope="col">Délai estimé</th>
+                <th scope="col">Tarif</th>
+                <th scope="col">Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Casablanca, Rabat, Marrakech</td>
+                <td>1–2 jours ouvrables</td>
+                <td>25 DH</td>
+                <td><span class="chip green">Disponible</span></td>
+              </tr>
+              <tr>
+                <td>Agadir, Fès, Tanger, Oujda</td>
+                <td>2–3 jours ouvrables</td>
+                <td>25 DH</td>
+                <td><span class="chip green">Disponible</span></td>
+              </tr>
+              <tr>
+                <td>Zones rurales & éloignées</td>
+                <td>3–5 jours ouvrables</td>
+                <td>25 DH</td>
+                <td><span class="chip green">Disponible</span></td>
+              </tr>
+              <tr>
+                <td>Commande ≥ 499 DH — Maroc</td>
+                <td>2–4 jours ouvrables</td>
+                <td><strong>Gratuit</strong></td>
+                <td><span class="chip gold">Offerte</span></td>
+              </tr>
+              <tr>
+                <td>France, Belgique, Espagne</td>
+                <td>7–10 jours ouvrables</td>
+                <td>250 DH</td>
+                <td><span class="chip orange">International</span></td>
+              </tr>
+              <tr>
+                <td>Reste de l'Europe &amp; Golfe</td>
+                <td>10–14 jours ouvrables</td>
+                <td>250 DH</td>
+                <td><span class="chip orange">International</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="faq-section" aria-label="Questions fréquentes livraison">
+      <div class="container">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-heading">Questions Fréquentes</h2>
+        <p class="section-sub">Tout ce que vous devez savoir sur notre livraison.</p>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Comment puis-je suivre ma commande ?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Une fois votre commande expédiée, nous vous communiquons un numéro de suivi via WhatsApp. Vous pouvez suivre votre colis sur le site du transporteur partenaire à tout moment.
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="--reveal-delay:.1s" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              La livraison gratuite s'applique-t-elle automatiquement ?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Oui, absolument ! Dès que votre panier atteint 499 DH, les frais de livraison au Maroc sont automatiquement supprimés. Aucun code promo nécessaire.
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="--reveal-delay:.15s" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Puis-je modifier mon adresse après avoir commandé ?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Oui, tant que votre colis n'a pas encore été remis au transporteur. Contactez-nous rapidement via WhatsApp et nous ferons le nécessaire.
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="--reveal-delay:.2s" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Que se passe-t-il si je suis absent à la livraison ?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Le transporteur tentera une deuxième livraison ou vous contactera pour convenir d'un nouveau créneau. Vous serez toujours notifié à l'avance via SMS ou WhatsApp.
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="--reveal-delay:.25s" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Expédiez-vous dans tous les pays ?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Nous expédions principalement vers l'Europe (France, Belgique, Espagne, Suisse…) et les pays du Golfe. Pour d'autres destinations, contactez-nous via WhatsApp pour vérifier la faisabilité.
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="--reveal-delay:.3s" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Les produits sont-ils bien protégés durant le transport ?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Absolument. Chaque commande est emballée avec soin : papier bulle pour les bouteilles, boîtes rigides, et film alimentaire hermétique pour les produits en vrac. Vos produits arrivent toujours intacts.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="delivery-cta">
+      <div class="container">
+        <h2>Prêt à Commander ?</h2>
+        <p>Découvrez notre sélection de produits du terroir et profitez de la livraison rapide et sécurisée.</p>
+        <div class="btn-group">
+          <a href="products.html" class="btn btn-primary">Voir les Produits</a>
+          <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:rgba(255,255,255,.5);color:#fff;">
+            <svg style="width:18px;height:18px;fill:currentColor;margin-right:6px;vertical-align:-3px" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+            Contacter via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <span class="logo-name" style="color:var(--cream)">Terroir Amazigh</span>
+          </div>
+          <p class="footer-desc">Des produits authentiques, issus du cœur des montagnes du Souss-Massa. 100% naturels, faits à la main.</p>
+          <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Commander sur WhatsApp</a>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="products.html">Produits</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="panier.html">Mon Panier</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Informations</h4>
+          <ul class="footer-links">
+            <li><a href="livraison.html">Livraison</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Politique de retour</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+            +212 6 33 54 86 05
+          </div>
+          
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Région Souss-Massa, Maroc
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Coopérative Terroir Amazigh. Tous droits réservés.</p>
+        <p style="color:var(--honey);font-size:.78rem">🇲🇦 Hicham Connecte</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       MOBILE BOTTOM NAVIGATION
+       ══════════════════════════════════════════════════ -->
+  <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
+    <div class="bottom-nav-items">
+      <a href="index.html" class="bottom-nav-item" aria-label="Accueil">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Accueil</span>
+      </a>
+      <a href="products.html" class="bottom-nav-item" aria-label="Produits">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span>Produits</span>
+      </a>
+      <a href="panier.html" class="bottom-nav-item" aria-label="Panier" style="position:relative">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="bnav-badge" aria-hidden="true">0</span>
+        <span>Panier</span>
+      </a>
+      <a href="livraison.html" class="bottom-nav-item active" aria-label="Livraison">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Livraison</span>
+      </a>
+      <a href="contact.html" class="bottom-nav-item" aria-label="Contact">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="wa-float" aria-label="Commander sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+  </a>
+
+  <div id="app-toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.
+  id="app-toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

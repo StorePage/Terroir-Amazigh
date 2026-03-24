@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez la Coopérative Terroir Amazigh — Questions sur nos produits, livraisons ou partenariats. Réponse rapide via WhatsApp.">
+  <meta name="keywords" content="contact coopérative maroc, commander huile argan, whatsapp commande terroir">
+  <meta name="author" content="Coopérative Terroir Amazigh">
+  <meta property="og:title" content="Contact — Coopérative Terroir Amazigh">
+  <meta property="og:description" content="Contactez-nous via WhatsApp ou notre formulaire pour toute question sur nos produits du terroir marocain.">
+  <meta property="og:type" content="website">
+  <title>Contact — Coopérative Terroir Amazigh</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    /* ── Page-specific styles ── */
+    .contact-hero {
+      background: linear-gradient(135deg, #2a4226 0%, var(--olive) 60%, #4a7c42 100%);
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+      color: var(--cream);
+    }
+    .contact-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .contact-hero p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      display: flex; gap: 0.5rem;
+      align-items: center; justify-content: center;
+      font-size: 0.82rem; opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--honey); text-decoration: none; }
+    .breadcrumb span { opacity: 0.6; }
+
+    /* ── Main contact layout ── */
+    .contact-main {
+      padding: 4rem 0;
+      background: var(--cream);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Info panel (left) ── */
+    .contact-info-panel {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .info-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .info-header p {
+      color: #6b5940;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.25rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    }
+    .info-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-card-icon svg {
+      width: 22px; height: 22px;
+      fill: none; stroke: currentColor; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .info-card-icon.green { background: rgba(58,92,53,.1); color: var(--olive); }
+    .info-card-icon.gold  { background: rgba(212,165,32,.12); color: #b8860b; }
+    .info-card-icon.earth { background: rgba(184,114,45,.1); color: var(--earth); }
+    .info-card-icon.wa    { background: rgba(37,211,102,.12); color: #25d366; }
+
+    .info-card-body { flex: 1; }
+    .info-card-title {
+      font-weight: 700; color: var(--dark);
+      font-size: 0.92rem; margin-bottom: 0.2rem;
+    }
+    .info-card-value {
+      color: #6b5940; font-size: 0.88rem; line-height: 1.6;
+    }
+    .info-card-value a {
+      color: var(--olive); text-decoration: none; font-weight: 600;
+    }
+    .info-card-value a:hover { text-decoration: underline; }
+
+    /* WhatsApp CTA card */
+    .wa-cta-card {
+      background: linear-gradient(135deg, #25d366, #1da851);
+      border-radius: 1rem;
+      padding: 1.5rem 1.4rem;
+      color: #fff;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(37,211,102,.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .wa-cta-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(37,211,102,.4);
+    }
+    .wa-cta-card svg {
+      width: 36px; height: 36px;
+      fill: #fff; flex-shrink: 0;
+    }
+    .wa-cta-card-body { flex: 1; }
+    .wa-cta-card .wt { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
+    .wa-cta-card .ws { font-size: 0.85rem; opacity: 0.9; }
+
+    /* Hours */
+    .hours-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.4rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .hours-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid #f0e8dc;
+      font-size: 0.87rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: #6b5940; }
+    .hours-row .time { font-weight: 600; color: var(--dark); }
+    .hours-row .badge-closed {
+      font-size: 0.72rem; background: #fde8e8; color: #c0392b;
+      padding: 0.15em 0.6em; border-radius: 50px; font-weight: 700;
+    }
+
+    /* ── Form panel (right) ── */
+    .contact-form-panel {
+      background: #fff;
+      border-radius: 1.2rem;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 6px 30px rgba(0,0,0,.09);
+    }
+    .form-header { margin-bottom: 1.75rem; }
+    .form-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.65rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.4rem;
+    }
+    .form-header p { color: #6b5940; font-size: 0.9rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .form-label .req { color: var(--earth); }
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1.5px solid #e8ddd0;
+      border-radius: 0.7rem;
+      font-size: 0.93rem;
+      font-family: var(--font-body);
+      color: var(--dark);
+      background: #faf7f3;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--olive);
+      box-shadow: 0 0 0 3px rgba(58,92,53,.12);
+      background: #fff;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: #b8a898; }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-hint { font-size: 0.78rem; color: #9e8a77; margin-top: 0.3rem; }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 0.95rem 1.5rem;
+      background: #25d366;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(37,211,102,.3);
+      letter-spacing: 0.01em;
+    }
+    .form-submit-btn:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37,211,102,.35);
+    }
+    .form-submit-btn:active { transform: translateY(0); }
+    .form-submit-btn svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+    .form-footer-note {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9e8a77;
+    }
+
+    /* ── Map / location section ── */
+    .location-section {
+      padding: 4rem 0;
+      background: #f5ede2;
+    }
+    .section-label { text-align:center; font-size:.78rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--earth); margin-bottom:.75rem; }
+    .section-heading { text-align:center; font-family:var(--font-display); font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; color:var(--dark); margin-bottom:.5rem; }
+    .section-sub { text-align:center; color:#6b5940; max-width:520px; margin:0 auto 3rem; font-size:.97rem; line-height:1.7; }
+
+    .map-placeholder {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+      background: #d4c4a8;
+      height: 340px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.75rem;
+      text-align: center;
+      padding: 2rem;
+    }
+    .map-placeholder-icon {
+      width: 60px; height: 60px;
+      background: var(--olive);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(58,92,53,.3);
+    }
+    .map-placeholder-icon svg {
+      width: 30px; height: 30px;
+      fill: none; stroke: #fff; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .map-placeholder h3 { font-family: var(--font-display); color: var(--dark); font-size: 1.3rem; }
+    .map-placeholder p { color: #6b5940; font-size: 0.9rem; }
+    .map-placeholder a {
+      display: inline-block;
+      background: var(--olive); color: #fff;
+      padding: 0.55em 1.4em; border-radius: 50px;
+      font-size: 0.87rem; font-weight: 700;
+      text-decoration: none;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Social proof strips ── */
+    .social-strip {
+      padding: 3rem 0;
+      background: var(--olive);
+      text-align: center;
+    }
+    .social-strip h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem,3vw,2rem);
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .social-strip p { color: rgba(250,243,232,.75); margin-bottom: 1.75rem; font-size: 0.95rem; }
+    .social-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .social-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .social-link:hover { transform: translateY(-2px); }
+    .social-link svg { width: 20px; height: 20px; }
+    .social-link.wa { background: #25d366; color: #fff; box-shadow: 0 4px 14px rgba(37,211,102,.35); }
+    .social-link.ig { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+    .social-link.fb { background: #1877f2; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       DESKTOP STICKY HEADER
+       ══════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo" aria-label="Accueil Coopérative Terroir Amazigh">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Terroir Amazigh</span>
+          <span class="logo-tagline">Coopérative Marocaine</span>
+        </div>
+      </a>
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="livraison.html">Livraison</a>
+        <a href="about.html">À propos</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a href="panier.html" class="header-cart-btn" aria-label="Mon panier">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Panier
+        <span class="cart-count-badge" style="display:none" aria-label="articles dans le panier">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── Hero ── -->
+    <section class="contact-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <span>Contact</span>
+        </nav>
+        <h1>📩 Contactez-Nous</h1>
+        <p>Une question, une commande spéciale, un partenariat ? Nous répondons dans les plus brefs délais.</p>
+      </div>
+    </section>
+
+    <!-- ── Main contact section ── -->
+    <section class="contact-main" aria-label="Formulaire et coordonnées">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Left: Info panel -->
+          <div class="contact-info-panel">
+
+            <div class="info-header">
+              <h2>Restons en Contact</h2>
+              <p>Que vous souhaitiez passer une commande, poser une question sur nos produits ou discuter d'un partenariat, nous sommes là pour vous.</p>
+            </div>
+
+            <!-- WhatsApp CTA (primary) -->
+            <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="wa-cta-card reveal" aria-label="Contacter via WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+              <div class="wa-cta-card-body">
+                <div class="wt">Réponse immédiate sur WhatsApp</div>
+                <div class="ws">+212 6 33 54 86 05 — Disponible 7j/7</div>
+              </div>
+            </a>
+
+            <!-- Contact info cards -->
+            <div class="info-card reveal" style="--reveal-delay:.05s">
+              <div class="info-card-icon earth">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+              </div>
+              <div class="info-card-body">
+                <div class="info-card-title">Téléphone</div>
+                <div class="info-card-value"><a href="tel:+212633548605">+212 6 33 54 86 05</a></div>
+              </div>
+            </div>
+
+            <div class="info-card reveal" style="--reveal-delay:.1s">
+              <div class="info-card-icon green">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              
+              <div class="info-card-body">
+                <div class="info-card-title">Adresse</div>
+                <div class="info-card-value">Douar Cooperative, Route de Tiznit<br>Région Souss-Massa, Maroc</div>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="hours-card reveal" style="--reveal-delay:.2s">
+              <h4>
+                <svg style="width:16px;height:16px;stroke:var(--olive);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Horaires de disponibilité
+              </h4>
+              <div class="hours-row">
+                <span class="day">Lundi – Vendredi</span>
+                <span class="time">8h00 – 18h00</span>
+              </div>
+              <div class="hours-row">
+                <span class="day">Samedi</span>
+                <span class="time">9h00 – 14h00</span>
+              </div>
+              <div class="hours-row">
+                <span class="day">Dimanche</span>
+                <span class="badge-closed">Fermé</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Form panel -->
+          <div class="contact-form-panel reveal">
+            <div class="form-header">
+              <h2>Envoyez-nous un Message</h2>
+              <p>Remplissez ce formulaire et votre message sera transmis directement via WhatsApp.</p>
+            </div>
+
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Nom complet <span class="req">*</span></label>
+                  <input type="text" id="contact-name" class="form-input" placeholder="Votre nom" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-phone">Téléphone</label>
+                  <input type="tel" id="contact-phone" class="form-input" placeholder="+212 6 33 54 86 05" autocomplete="tel">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-subject">Sujet <span class="req">*</span></label>
+                <select id="contact-subject" class="form-select form-input" required>
+                  <option value="" disabled selected>Choisissez un sujet…</option>
+                  <option value="Commande">Passer une commande</option>
+                  <option value="Renseignement produit">Renseignement sur un produit</option>
+                  <option value="Livraison">Question sur la livraison</option>
+                  <option value="Partenariat">Partenariat / Grossiste</option>
+                  <option value="Réclamation">Réclamation</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Message <span class="req">*</span></label>
+                <textarea id="contact-message" class="form-textarea" placeholder="Décrivez votre demande en détail…" required></textarea>
+                <div class="form-hint">Soyez précis pour une réponse plus rapide ✨</div>
+              </div>
+
+              <button type="submit" class="form-submit-btn" id="submit-btn">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+                Envoyer via WhatsApp
+              </button>
+
+              <p class="form-footer-note">🔒 Votre message est envoyé directement via WhatsApp — pas de spam.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Location section ── -->
+    <section class="location-section" aria-label="Notre emplacement">
+      <div class="container">
+        <p class="section-label">Notre emplacement</p>
+        <h2 class="section-heading">Où Nous Trouver ?</h2>
+        <p class="section-sub">Notre coopérative est basée au cœur de la région Souss-Massa, berceau de l'arganier.</p>
+
+        <div class="map-placeholder reveal">
+          <div class="map-placeholder-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Région Souss-Massa, Maroc</h3>
+          <p>Douar Coopérative, Route de Tiznit — Près d'Agadir</p>
+          <a href="https://www.google.com/maps/search/Souss-Massa+Maroc" target="_blank" rel="noopener">
+            Voir sur Google Maps →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Social strip ── -->
+    <section class="social-strip" aria-label="Réseaux sociaux">
+      <div class="container">
+        <h3>Suivez-Nous sur les Réseaux</h3>
+        <p>Découvrez les coulisses de la coopérative, nos recettes et nos nouveautés.</p>
+        <div class="social-links">
+          <a href="https://wa.me/212633548605" class="social-link wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+            WhatsApp
+          </a>
+          <a href="#" class="social-link ig" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+          <a href="#" class="social-link fb" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <span class="logo-name" style="color:var(--cream)">Terroir Amazigh</span>
+          </div>
+          <p class="footer-desc">Des produits authentiques, issus du cœur des montagnes du Souss-Massa. 100% naturels, faits à la main.</p>
+          <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Commander sur WhatsApp</a>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="products.html">Produits</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="panier.html">Mon Panier</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Informations</h4>
+          <ul class="footer-links">
+            <li><a href="livraison.html">Livraison</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Politique de retour</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+            +212 6 33 54 86 05
+          </div>
+          
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Région Souss-Massa, Maroc
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Coopérative Terroir Amazigh. Tous droits réservés.</p>
+        <p style="color:var(--honey);font-size:.78rem">🇲🇦 Hicham Connecte</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       MOBILE BOTTOM NAVIGATION
+       ══════════════════════════════════════════════════ -->
+  <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
+    <div class="bottom-nav-items">
+      <a href="index.html" class="bottom-nav-item" aria-label="Accueil">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Accueil</span>
+      </a>
+      <a href="products.html" class="bottom-nav-item" aria-label="Produits">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span>Produits</span>
+      </a>
+      <a href="panier.html" class="bottom-nav-item" aria-label="Panier" style="position:relative">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="bnav-badge" aria-hidden="true">0</span>
+        <span>Panier</span>
+      </a>
+      <a href="livraison.html" class="bottom-nav-item" aria-label="Livraison">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Livraison</span>
+      </a>
+      <a href="contact.html" class="bottom-nav-item active" aria-label="Contact">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83 19.79 19.79 0 01.01 5.2 2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.1a16 16 0 006 6l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.5v-.58z"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/212633548605" target="_blank" rel="noopener" class="wa-float" aria-label="Commander sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+  </a>
+
+  <div id="app-toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+  <script>
+    /* ── Contact form → WhatsApp ── */
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('contact-name').value.trim();
+      const phone   = document.getElementById('contact-phone').value.trim();
+      const subject = document.getElementById('contact-subject').value;
+      const message = document.getElementById('contact-message').value.trim();
+
+      // Basic validation
+      if (!name) {
+        showToast('Veuillez saisir votre nom.', 'error');
+        document.getElementById('contact-name').focus();
+        return;
+      }
+      if (!subject) {
+        showToast('Veuillez choisir un sujet.', 'error');
+        document.getElementById('contact-subject').focus();
+        return;
+      }
+      if (!message) {
+        showToast('Veuillez écrire votre message.', 'error');
+        document.getElementById('contact-message').focus();
+        return;
+      }
+
+      // Build WhatsApp message
+      let wa = '🌿 *Nouveau Message — Terroir Amazigh*\n\n';
+      wa += `👤 *Nom :* ${name}\n`;
+      if (phone) wa += `📞 *Téléphone :* ${phone}\n`;
+      wa += `📌 *Sujet :* ${subject}\n\n`;
+      wa += `💬 *Message :*\n${message}\n`;
+
+      const encoded = encodeURIComponent(wa);
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Redirection vers WhatsApp…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        window.open(`https://wa.me/212633548605?text=${encoded}`, '_blank');
+        btn.innerHTML = `
+          <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+          Message envoyé ✓
+        `;
+        btn.style.background = '#1da851';
+        showToast('Message transmis via WhatsApp ! 🎉', 'success');
+
+        // Reset after 3s
+        setTimeout(() => {
+          document.getElementById('contact-form').reset();
+          btn.innerHTML = `
+            <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C6.003 1 1.1 5.9 1.1 11.9c0 1.88.49 3.65 1.35 5.18L1.1 23l6.08-1.33A10.84 10.84 0 0012 23C17.997 23 22.9 18.1 22.9 12.1S17.997 1 12 1zm0 19.8c-1.63 0-3.18-.44-4.53-1.2l-.32-.19-3.36.74.76-3.28-.21-.34A8.78 8.78 0 013.3 12.1C3.3 7.1 7.2 3.1 12 3.1c4.8 0 8.7 4 8.7 9s-3.9 8.7-8.7 8.7z"/></svg>
+            Envoyer via WhatsApp
+          `;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }, 600);
+    });
+
+    // Helper: simple toa
+  id="app-toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
